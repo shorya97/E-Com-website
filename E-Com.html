@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>E-Com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+
+  </script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+          margin-bottom: 50px;
+          border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+    .jumbotron {
+          margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+          background-color: #f2f2f2;
+          padding: 25px;
+    }
+
+    .invalid { 
+          border-color: red; 
+      }
+    #error { 
+          color: red 
+      }
+
+    .dropbtn {
+          padding: 16px;
+          font-size: 15px;
+          border: none;
+          cursor: pointer;
+          margin-left:40px;
+          background-color: #222;
+          color: #999;
+    }
+
+    .dropbtn:hover{
+          color: white;
+    }
+
+    .dropdown {
+          position: relative;
+          display: inline-block;
+    }
+
+    .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          left:40px;
+          width:150px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+    }
+
+    .dropdown-content p{
+          padding: 12px;
+          text-decoration: none;
+          display: block;
+    }
+
+    .dropdown-content p:hover {
+          background-color: #ddd
+    }
+
+    .show {
+          display:block;
+    } 
+
+    .hovercolor {
+          background-color: rgb(126, 209, 236);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"> <strong> Small Basket </strong> </a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><input type="text" id="myInput" onkeyup="search()" placeholder="Search for names.." 
+              style="margin-top:9px; margin-left:27px; width:224px; height:31px;"></li>
+          <li>
+            <div class="dropdown">
+              <button onclick="filterFunction()" class="dropbtn" id="dropdown">Category</button>
+                <div id="dd" class="dropdown-content">
+                  <p id="all">All</p>
+                  <p id="fruit">Fruits</p>
+                  <p id="veg">Vegetables</p>
+                </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="myCart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="plist">
+  <div class="container" >
+    <div class="row">
+      <div id="tomatoDiv" class="col-sm-4 p  veg" >
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Tomato </div>
+          <div class="panel-body"><img src="cart Images/tomato.jpg" class="img-responsive"
+              style="width:100%; height: 250px;" alt="Image" onmouseover="onHover('tomatoDiv')" onmouseout="onHoverout('tomatoDiv')"></div>
+          <div class="panel-footer">
+            <button id="tomatoButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div id="cucumberDiv" class="col-sm-4 p veg">
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Cucumber</div>
+          <div class="panel-body"><img src="cart Images/cucumber.jpg" class="img-responsive"
+              style="width:100%;  height: 250px;" alt="Image" onmouseover="onHover('cucumberDiv')" onmouseout="onHoverout('cucumberDiv')"></div>
+          <div class="panel-footer">
+            <button id="cucumberButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div id="chilliDiv" class="col-sm-4 p veg">
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Chilli</div>
+          <div class="panel-body"><img src="cart Images/chilli.jpg" class="img-responsive"
+              style="width:100%; height: 250px" alt="Image" onmouseover="onHover('chilliDiv')" onmouseout="onHoverout('chilliDiv')"></div>
+          <div class="panel-footer">
+            <button id="chilliButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container">
+    <div class="row">
+      <div id="strawberryDiv" class="col-sm-4 p fruit">
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Strawberry </div>
+          <div class="panel-body"><img id="strawberyImg" src="cart Images/strawbery.jpg" class="img-responsive"
+              style="width:100%; height: 250px;" alt="Image" onmouseover="onHover('strawberryDiv')" onmouseout="onHoverout('strawberryDiv')"></div>
+          <div class="panel-footer">
+            <button id="strawberryButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div id="mangoDiv" class="col-sm-4 p fruit">
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Mango</div>
+          <div class="panel-body"><img src="cart Images/mango.jpg" class="img-responsive"
+              style="width:100%;  height: 250px;" alt="Image" onmouseover="onHover('mangoDiv')" onmouseout="onHoverout('mangoDiv')"></div>
+          <div class="panel-footer">
+            <button id="mangoButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div id="pineappleDiv" class="col-sm-4 p fruit">
+        <div class="panel panel-primary" >
+          <div class="panel-heading">Pineapple</div>
+          <div class="panel-body"><img src="cart Images/pineapple.jpg" class="img-responsive"
+              style="width:100%; height: 250px" alt="Image" onmouseover="onHover('pineappleDiv')" onmouseout="onHoverout('pineappleDiv')"></div>
+          <div class="panel-footer">
+            <button id="pineappleButton" type="button" class="btn btn-primary" onclick="addToCart(id)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><br><br>
+
+  <footer class="container-fluid text-center">
+    <p>Online Store Copyright</p>
+    <form class="form-inline">Get deals:
+      <input type="email" class="form-control" size="50" placeholder="Email Address" id="input">
+      <div id="error"></div>
+      <button type="button" class="btn btn-danger">Sign Up</button>
+    </form>
+  </footer>
+
+  <script>
+
+    localStorage.clear();
+    let history=new Set();
+    let start='';
+    let end='';
+
+    //Add To Cart
+    function addToCart(item){
+      if (localStorage.getItem(item)==null){
+        localStorage.setItem(item,1);
+      }
+      else{
+        localStorage.setItem(item,parseInt(localStorage.getItem(item))+1);
+      }
+    }
+
+    //Validate Email
+    input.onblur = function(){
+      if (!input.value.includes('@')) {
+        input.classList.add('invalid');
+        error.innerHTML = "Please enter a correct email."
+      }
+    };
+
+    input.onfocus = function(){
+      if (this.classList.contains('invalid')) {
+        this.classList.remove('invalid');
+        error.innerHTML= "";
+      }
+    }
+
+    //Search Box
+    function search() {
+
+      var input,filter,plist,prods,i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      plist = document.getElementById("plist");
+      prods = plist.getElementsByClassName("p");
+
+      for (i=0;i<prods.length;i++){
+        if (prods[i].id.toUpperCase().indexOf(filter)==0){
+          prods[i].style.display = ""
+
+          if (filter!='' && prods[i].id.toUpperCase()==filter){
+
+            history.add(prods[i].id)  //Store all the items searched by the user
+            console.log(history);
+          }
+        }
+        else{
+          prods[i].style.display ="none";
+        }
+      }
+    }
+
+    //DropDown
+    function filterFunction(){
+      document.getElementById("dd").classList.toggle("show");
+    };
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }; 
+    
+    fruit.addEventListener("click",()=>{
+        
+        document.getElementById("dropdown").textContent="Fruits"
+        let prd=document.getElementsByClassName("p");
+                
+        for(let i=0;i<prd.length;i++){
+            
+            if (prd[i].classList.contains("fruit")){
+                prd[i].style.display = ""
+            }
+            else{
+                prd[i].style.display = "none"
+            }
+        }
+    });
+    
+    veg.addEventListener("click",()=>{
+        
+        document.getElementById("dropdown").textContent="Vegetables"
+        let prd=document.getElementsByClassName("p");
+        
+        for(let i=0;i<prd.length;i++){
+            
+            if (prd[i].classList.contains("veg")){
+                prd[i].style.display = ""
+            }
+          
+            else{
+                prd[i].style.display = "none"
+            }
+        }
+    });
+
+    all.addEventListener("click",()=>{
+        
+        document.getElementById("dropdown").textContent="Category"
+        let prd=document.getElementsByClassName("p");
+        
+        for(let i=0;i<prd.length;i++){
+            prd[i].style.display = ""
+        }            
+    });
+    
+    //Hover Time
+    function onHover(id){
+      
+      document.getElementById(id).classList.add("hovercolor");
+      start=new Date()
+    };
+  
+    function onHoverout(id){
+      
+        document.getElementById(id).classList.remove("hovercolor");
+        final=new Date()
+        console.log(((final.getTime()-start.getTime())/1000)+" secs");
+    };
+
+  </script>
+
+</body>
+
+</html>

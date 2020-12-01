@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>E-Com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+
+  </script>
+  <style>
+  
+    .navbar {
+          margin-bottom: 50px;
+          border-radius: 0;
+    }
+
+    #myCart {                
+            background-color: #aaa;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            width:400px;
+            }
+            
+    #myCart td{                
+            padding-left:39px;
+            padding-top:14px;
+    }
+            
+    #myCart tr{                
+            background-color: rgba(117, 204, 255, 0.87);
+    }
+
+    table, th, td {
+            border: 1px solid black;
+    }
+
+    h2 {
+            margin-top: -8px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="E-Com.html"> <strong> Small Basket </strong> </a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="myCart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <table id="myCart">
+    <thead>
+        <tr>
+            <td><h2>Item Name</h2></td>
+            <td><h2>Quantity</h2></td>
+        </tr>
+    </thead>
+  </table>
+
+
+  <script>
+
+    for(var i=0; i<localStorage.length; i++){
+                console.log(localStorage.key(i));
+                var row1 = document.createElement("tr");
+                var data1 = document.createElement("td");
+                var data1data = document.createTextNode(localStorage.key(i).slice(0,localStorage.key(i).length-6));
+                var data2 = document.createElement("td");
+                var data2data = document.createTextNode(localStorage.getItem(localStorage.key(i)));
+                data1.append(data1data);
+                data2.append(data2data);
+                row1.append(data1);
+                row1.append(data2);
+                myCart.append(row1);
+            }
+
+  </script>
+
+</body>
+
+</html>
